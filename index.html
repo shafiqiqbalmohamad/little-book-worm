@@ -18,19 +18,19 @@
                 baca buku
             </span>
     
-            <span class="text-3xl cursor-pointer sm:hidden block">
+            <span class="text-3xl cursor-pointer mx-2 sm:hidden block">
                 <ion-icon name="menu-outline" onclick="Menu(this)"></ion-icon>
             </span>
         </div>
     
-        <ul class="sm:flex sm:items-center z-\[-1\] sm:z-auto sm:static absolute bg-transparent w-full left-0 sm:w-auto sm:py-0 py-4 sm:pl-0 pl-5 sm:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-500">
-            <li class="mx-3 my-3 sm:sm-0">
-                <a href="#" class="text-xl hover:text-blue-700">Home</a>
+        <ul class="sm:flex sm:items-center z-[-1] sm:z-auto sm:static absolute bg-transparent w-full left-0 sm:w-auto sm:py-0 py-4 sm:pl-0 pl-5 sm:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-500">
+            <li class="mx-3 my-3 sm:my-0">
+                <a href="#" class="text-xl hover:text-blue-700 duration-500">Home</a>
             </li>
-            <li class="mx-3 mx-3 my-3 sm:sm-0">
+            <li class="mx-3 my-3 sm:my-0">
                 <a href="#" class="text-xl hover:text-blue-700 duration-500">Contact</a>
             </li>
-            <li class="mx-3 mx-3 my-3 sm:sm-0">
+            <li class="mx-3 my-3 sm:my-0">
                 <a href="#" class="text-xl hover:text-blue-700 duration-500">Blog</a>
             </li>
     
@@ -83,6 +83,12 @@
 
     <script>
 
+        function Menu(el) {
+                let list = document.querySelector("ul");
+                el.name === "menu-outline" ? (el.name = "close-outline",list.classList.add("top-[80px]") , list.classList.add("opacity-100")) : (el.name = "menu-outline" ,list.classList.remove("top-[80px]"),list.classList.remove("opacity-100"))
+            }
+
+
         fetch("books.json")
             .then((response) => response.json())
             .then((data) => {
@@ -102,11 +108,6 @@
                 });
                 document.getElementById("books").innerHTML = books;
             })
-
-            function Menu(el) {
-                let list = document.querySelector("ul");
-                el.name === "menu-outline" ? (el.name = "close-outline",list.classList.add("top-[80px]") ,list.classList.add("opacity-100")) : (el.name = "menu-outline",list.classList.remove("top-[80px]"),list.classList.remove("opacity-100"))
-            }
 
     </script>
     
