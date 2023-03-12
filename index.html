@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,57 +11,82 @@
 </head>
 
 <body class="bg-white">
-
-    <!-- piwik pro container code start -->
-    
-    <script type="text/javascript">
-        (function (window, document, dataLayerName, id) {
-            window[dataLayerName] = window[dataLayerName] || [], window[dataLayerName].push({ start: (new Date).getTime(), event: "stg.start" }); var scripts = document.getElementsByTagName('script')[0], tags = document.createElement('script');
-            function stgCreateCookie(a, b, c) { var d = ""; if (c) { var e = new Date; e.setTime(e.getTime() + 24 * c * 60 * 60 * 1e3), d = "; expires=" + e.toUTCString() } document.cookie = a + "=" + b + d + "; path=/" }
-            var isStgDebug = (window.location.href.match("stg_debug") || document.cookie.match("stg_debug")) && !window.location.href.match("stg_disable_debug"); stgCreateCookie("stg_debug", isStgDebug ? 1 : "", isStgDebug ? 14 : -1);
-            var qP = []; dataLayerName !== "dataLayer" && qP.push("data_layer_name=" + dataLayerName), isStgDebug && qP.push("stg_debug"); var qPString = qP.length > 0 ? ("?" + qP.join("&")) : "";
-            tags.async = !0, tags.src = "https://shafiqiqbalmohamad.containers.piwik.pro/" + id + ".js" + qPString, scripts.parentNode.insertBefore(tags, scripts);
-            !function (a, n, i) { a[n] = a[n] || {}; for (var c = 0; c < i.length; c++)!function (i) { a[n][i] = a[n][i] || {}, a[n][i].api = a[n][i].api || function () { var a = [].slice.call(arguments, 0); "string" == typeof a[0] && window[dataLayerName].push({ event: n + "." + i + ":" + a[0], parameters: [].slice.call(arguments, 1) }) } }(i[c]) }(window, "ppms", ["tm", "cm"]);
-        })(window, document, 'dataLayer', '72535c6b-2722-4456-9699-a203db3a0ec7');
-    </script>
-    
-    <!-- piwik pro container code end -->
-
+    <!-- start navbar upper menu section -->
     <nav class="p-5 bg-slate-100 shadow md:flex md:items-center md:justify-between">
-        <div class="flex items-center justify-between">
-            <a href="https://littlebookworm.mykl.shop/"><img src="./img/logo.png" alt="mykl shop" class="relative w-16 inline"><span
-                    class="text-3xl font-sans font-semibold cursor-pointer pl-2" style="color: #4149B6">baca
-                    buku</span></a>
-
+        <div class="flex items-center justify-between">    
+            <div class="flex">
+                <a href="https://littlebookworm.mykl.shop/"><img src="./img/logo.png" alt="mykl shop"
+                        class="relative w-16 inline"></a>
+    
+                <!-- cart reference: https://www.youtube.com/watch?v=NZ11jlEeZN8 -->    
+                <div class="cart">
+                    <button type="button" id="cart-btn">
+                        <div class="flex text-4xl p-1 relative">
+                            <ion-icon name="cart" style="color: #41B100"></ion-icon>
+                            <p id="cart-count-info" class="font-medium flex items-center justify-center"
+                                style="color: #41B100"></p>
+                        </div>
+                    </button>
+    
+                    <div
+                        class="cart-container absolute overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-100 scrollbar-thumb bg-white w-3/4 h-auto top-auto shadow-md rounded hidden">
+                        <div class="cart-list grid gap-x-2 items-center relative py-7 px-2.5">
+                            <!-- <div class="cart-item grid grid-cols-2 gap-x-2 items-center relative py-7 px-2.5">
+                                    <img src="./img/logo.png" alt="Product Image" class="w-20">
+                                    <div class="cart-item-info flex flex-col">
+                                        <h3 class="cart-item-name">navy blue</h3>
+                                        <span class="cart-item-original-price line-through">199</span>
+                                        <span class="cart-item-offer-price">169</span>
+                                    </div>
+                                    <button class="cart-item-del-btn absolute right-4 top-12 py-0.5 px-2 text-xl text-gray-600 ">
+                                        <ion-icon name="close-circle"></ion-icon>
+                                    </button>
+                                </div> -->
+                        </div>
+    
+                        <div class="cart-total p-4 flex items-center justify-start bg-blue-700 text-white font-semibold">
+                            <h3>Total Price:</h3>
+                            <span id="cart-total-value" class="pl-1"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
             <span class="text-3xl cursor-pointer mx-2 block md:hidden">
                 <ion-icon name="menu-outline" onclick="Menu(this)"></ion-icon>
             </span>
         </div>
-
+    
         <ul id="navList"
             class="md:flex md:items-center z-1 md:z-auto md:static absolute bg-transparent w-full left-0 md:w-auto py-4 md:py-0 pl-2 md:pl-0 opacity-0 md:opacity-100 top-[-400px] transition-all ease-in duration-500">
             <li class="mx-4 my-4 md:my-0">
                 <a href="https://littlebookworm.mykl.shop/" class="text-xl hover:text-blue-700 duration-500">Home</a>
             </li>
             <li class="mx-4 my-4 md:my-0">
-                <a href="https://wasap.my/60132349717/like-to-know-more-about-little-book-worm-collection/" class="text-xl hover:text-blue-700 duration-500">Contact</a>
+                <a href="https://wasap.my/60132349717/like-to-know-more-about-little-book-worm-collection/"
+                    class="text-xl hover:text-blue-700 duration-500">Contact</a>
             </li>
             <li class="mx-4 my-4 md:my-0">
                 <a href="https://ablog.mykl.shop/" class="text-xl hover:text-blue-700 duration-500">Blog</a>
             </li>
             <button
-                class="my-4 md:my-0 bg-green-600 text-white font-sans duration-500 px-6 py-2 mx-4 hover:bg-white hover:text-green-600 hover:ring-2 hover:ring-green-600 rounded-lg" onclick="window.location.href='https://wasap.my/60132349717/like-to-know-more-about-little-book-worm-collection/';">
+                class="my-4 md:my-0 bg-green-600 text-white font-sans duration-500 px-6 py-2 mx-4 hover:bg-white hover:text-green-600 hover:ring-2 hover:ring-green-600 rounded-lg"
+                onclick="window.location.href='https://wasap.my/60132349717/like-to-know-more-about-little-book-worm-collection/';">
                 WhatsApp
             </button>
         </ul>
     </nav>
+    <!-- end navbar upper menu section -->
 
+    <!-- start main content section - product list -->
     <div class="container font-sans min-h-screen bg-white max-w-full">
         <h2 class="text-center pt-5 text-2xl font-semibold">Special Books For Your Kids</h2>
-
-        <div id="books" class="books grid md:grid-cols-3 gap-12 my-12 mx-auto p-5"></div>
+    
+        <div id="products-lists" class="products-lists grid md:grid-cols-3 gap-12 my-12 mx-auto p-5"></div>
     </div>
+    <!-- end main content section - product list -->
 
+    <!-- start footer section -->
     <footer class="bg-slate-100 py-6 pl-2">
         <div class="container mx-auto px-2 text-black">
             <div class="md:flex justify-between">
@@ -93,7 +117,8 @@
                             <a href="https://littlebookworm.mykl.shop/">Home</a>
                         </li>
                         <li>
-                            <a href="https://wasap.my/60132349717/like-to-know-more-about-little-book-worm-collection/">Contact</a>
+                            <a
+                                href="https://wasap.my/60132349717/like-to-know-more-about-little-book-worm-collection/">Contact</a>
                         </li>
                         <li>
                             <a href="https://ablog.mykl.shop/">Blog</a>
@@ -109,35 +134,9 @@
             </div>
         </div>
     </footer>
+    <!-- end footer section -->
 
-    <script>
-        function Menu(el) {
-            let list = document.querySelector("#navList");
-            el.name === "menu-outline" ? (el.name = "close-outline", list.classList.add("top-[80px]"), list.classList.add("opacity-100")) : (el.name = "menu-outline", list.classList.remove("top-[80px]"), list.classList.remove("opacity-100"))
-        }
-
-        fetch("books.json")
-                .then((response) => response.json())
-                .then((data) => {
-                    let books = "";
-                    data.forEach((book) => {
-                        books += `
-                    <div class="book p-2.5">
-                        <img class="w-64 ml-auto mr-auto block" src="${book.image}">
-                        <h4 class="text-center pt-7 pb-5 font-semibold first-letter text-center">Title: ${book.title}</h4>
-                        <p class="pt-0 px-5 pb-5 text-center leading-5 line-through">${book.originalPrice}</p>
-                        <p class="pt-0 px-5 pb-5 text-center leading-5 text-blue-700">${book.offerPrice}</p>
-                        <a href="${book.url}">
-                            <button class="bg-blue-700 text-white font-sans duration-500 px-8 py-2 mx-auto hover:bg-pink-500 rounded-md flex">Buy Now</button>
-                        </a>
-                    </div>
-                `;
-                    });
-                    document.getElementById("books").innerHTML = books;
-                })
-
-    </script>
+    <script src="./script.js"></script>
 
 </body>
-
 </html>

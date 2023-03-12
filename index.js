@@ -1,42 +1,26 @@
 // using file system (fs) module
 const fs = require("fs");
 
-// require puppeteer package
+// require for puppeteer package
 const puppeteer = require("puppeteer");
 
+// require autoscroll down library
 const { scrollPageToBottom } = require("puppeteer-autoscroll-down");
 
 async function run() {
-  // open browser programmatically
+  // automate the browser opening, eg: open the google chrome
   const browser = await puppeteer.launch();
 
-  // initialize the page
+  // initialize the page, eg: open new tab in browser
   const page = await browser.newPage();
 
-  // go to specific page
+  // go to specific page, eg: key in url link
   await page.goto("https://www.littlebookworm.com.my/");
-  // await page.goto("https://www.littlebookworm.com.my/", {
-  //   waitUntil: "networkidle2",
-  // });
 
-  // await page.goto("https://www.littlebookworm.com.my/", {
-  //   waitUntil: "networkidle2",
-  //   timeout: 60000,
-  // });
-
+  // using scrollPageToBottom method
   await scrollPageToBottom(page);
 
-  // await page.goto("https://www.littlebookworm.com.my/");
-  // await page.waitForNavigation({ waitUntil: "networkidle2", timeout: 30000 });
-
-  // create full page screenshot of the page
-  // await page.screenshot({ path: "littlebookworm.png", fullPage: true });
-
-  // obtaining entire html content of the page
-  // const html = await page.content();
-  // console.log(html);
-
-  const books = await page.evaluate(() =>
+  const products = await page.evaluate(() =>
     Array.from(
       document.querySelectorAll(".sc-product .sc-product-container"),
       (e) => ({
@@ -50,9 +34,10 @@ async function run() {
     )
   );
 
-  console.log(books);
+  console.log(products);
 
-  fs.writeFile("books.json", JSON.stringify(books), (err) => {
+  // save to json file
+  fs.writeFile("products.json", JSON.stringify(products), (err) => {
     if (err) throw err;
     console.log("JSON file saved");
   });
